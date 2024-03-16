@@ -732,6 +732,7 @@ def handle_text_message(event):
 
 @handler.add(MessageEvent, message=LocationMessageContent)
 def handle_location_message(event):
+    app.logger.info("Got location message: " + event.message.address)
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         line_bot_api.reply_message(
